@@ -3,22 +3,21 @@ package HospitalManagement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Scanner;
 
 public class Doctor {
 
     private final Connection connection;
 
-    public Doctor(Connection connection, Scanner scanner) {
+    public Doctor(Connection connection) {
         this.connection = connection;
     }
 
-    public void viewPatient() {
-        String query = "SELECT * FROM doctor";
+    public void viewDoctor() {
+        String query = "SELECT * FROM doctors";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            System.out.println("Patient Details:");
+            System.out.println("Doctor Details:");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
