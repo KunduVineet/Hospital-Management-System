@@ -16,11 +16,15 @@ public class Patient {
 
     public void addPatient() {
         System.out.println("Enter Patient Name");
-        String name = scanner.nextLine();
+        String name = scanner.next();
+
         System.out.println("Enter Patient Age");
         int age = scanner.nextInt();
+        scanner.nextLine(); // Consume the leftover newline
+
         System.out.println("Enter Patient Gender");
-        String gender = scanner.nextLine();
+        String gender = scanner.next();
+
 
         try {
             String query = "INSERT INTO patient (name, age, gender) VALUES (?, ?, ?)";
@@ -47,7 +51,7 @@ public class Patient {
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            System.out.println("Doctor Details:");
+            System.out.println("Patient Details:");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
