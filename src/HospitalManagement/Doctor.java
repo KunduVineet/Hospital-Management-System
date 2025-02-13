@@ -7,36 +7,33 @@ import java.util.Scanner;
 
 public class Doctor {
 
-    private Connection connection;
-    private Scanner scanner;
+    private final Connection connection;
 
     public Doctor(Connection connection, Scanner scanner) {
         this.connection = connection;
-        this.scanner = scanner;
     }
 
-
-    public void viewDoctor() {
+    public void viewPatient() {
         String query = "SELECT * FROM doctor";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            System.out.println("Doctor Details:");
+            System.out.println("Patient Details:");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                int age = rs.getInt("age");
-                String gender = rs.getString("gender");
-                System.out.println(id + " " + name + " " + age + " " + gender);
+                String specialization = rs.getString("specalization");
+                System.out.println(id + " " + name + " " + specialization);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean checkPatient(int id) {
-        String query = "SELECT * FROM patient WHERE id = ?";
+
+    public boolean checkDoctor(int id) {
+        String query = "SELECT * FROM doctors WHERE id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, id);

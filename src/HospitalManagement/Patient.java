@@ -47,7 +47,7 @@ public class Patient {
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            System.out.println("Patient Details:");
+            System.out.println("Doctor Details:");
 
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -60,7 +60,6 @@ public class Patient {
             throw new RuntimeException(e);
         }
     }
-
     public boolean checkPatient(int id) {
         String query = "SELECT * FROM patient WHERE id = ?";
         try {
