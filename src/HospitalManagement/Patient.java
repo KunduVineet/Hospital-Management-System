@@ -9,6 +9,7 @@ public class Patient {
     private final Connection connection;
     private final Scanner scanner;
 
+
     public Patient(Connection connection, Scanner scanner) {
         this.connection = connection;
         this.scanner = scanner;

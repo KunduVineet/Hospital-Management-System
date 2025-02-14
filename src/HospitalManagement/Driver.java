@@ -101,6 +101,8 @@ public class Driver {
         }
     }
 
+
+
     public static boolean checkDoctorAvailable(int doctorID, String appointmentDate, Connection con) {
         String query = "SELECT COUNT(*) FROM Appointments WHERE DoctorID = ? AND AppointmentDate = ?";
 
